@@ -12,13 +12,13 @@ local xd, zd
 local forceMove = false
 
 -- Defines current position/orientation as origin
-function setOrigin()
-   x = 0
-   y = 0
-   z = 0
+function setOrigin(x0, y0, z0, xd0, zd0)
+   x = x0 or 0
+   y = y0 or 0
+   z = z0 or 0
 
-   xd = 0
-   zd = -1
+   xd = xd0 or 0
+   zd = zd0 or -1
 end
 
 setOrigin()
