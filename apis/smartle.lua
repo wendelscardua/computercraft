@@ -250,3 +250,11 @@ function require(slot, minAmount, itemName, verbose)
       end
    end
 end
+
+-- extend turtle
+dig = turtle.dig
+digUp = turtle.digUp
+digDown = turtle.digDown
+detect = turtle.detect
+detectUp = turtle.detectUp
+detectDown = turtle.detectDown
