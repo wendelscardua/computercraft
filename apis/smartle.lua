@@ -221,9 +221,9 @@ function require(slot, minAmount, itemName, verbose)
    if slot then
       turtle.select(slot)
       while true do
-         details = turtle.getItemDetail(slot)
-         if (not itemName or itemName == details.name) and details.count >= minAmount then
-            if not verbose == nil then print("Thanks") end
+         local details = turtle.getItemDetail(slot)
+         if details and (not itemName or itemName == details.name) and details.count >= minAmount then
+            if not (verbose == nil) then print("Thanks") end
             return
          end
          if verbose then
@@ -235,10 +235,10 @@ function require(slot, minAmount, itemName, verbose)
    else
       while true do
          for i = 1, 16 do
-            details = turtle.getItemDetail(i)
-            if (not itemName or itemName == details.name) and details.count >= minAmount then
+            local details = turtle.getItemDetail(i)
+            if details and (not itemName or itemName == details.name) and details.count >= minAmount then
                turtle.select(i)
-               if not verbose == nil then print("Thanks") end
+               if not (verbose == nil) then print("Thanks") end
                return
             end
          end
