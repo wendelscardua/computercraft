@@ -8,6 +8,9 @@ local z -- usually from north to south
 -- direction
 local xd, zd
 
+-- dig-while-moving flag
+local forceMove = false
+
 -- Defines current position/orientation as origin
 function setOrigin()
    x = 0
@@ -20,12 +23,44 @@ end
 
 setOrigin()
 
+-- affects forceMove flag
+
+function setForceMove(flag)
+   forceMove = flag
+end
+
+-- internal movement functions, applying forceMove if needed
+
+function internalForward ()
+   if forceMove and not turtle.forward() then dig() end
+   return turtle.forward()
+end
+
+function internalBack ()
+   if forceMove and not turtle.back() then
+      turnRight(2)
+      dig()
+      turnRight(2)
+   end
+   return turtle.back()
+end
+
+function internalUp ()
+   if forceMove and not turtle.up() then digUp() end
+   return turtle.up()
+end
+
+function internalDown ()
+   if forceMove and not turtle.down() then digDown() end
+   return turtle.down()
+end
+
 -- multi step movement functions
 
 function up(n)
-   n = n or 1
-   for i = 1, n do
-      if not turtle.up() then
+      n = n or 1
+      for i = 1, n do
+      if not internalUp() then
          return false
       end
       y = y + 1
@@ -36,7 +71,7 @@ end
 function down(n)
    n = n or 1
    for i = 1, n do
-      if not turtle.down() then
+      if not internalDown() then
          return false
       end
       y = y - 1
@@ -47,7 +82,7 @@ end
 function forward(n)
    n = n or 1
    for i = 1, n do
-      if not turtle.forward() then
+      if not internalForward() then
          return false
       end
       x = x + xd
@@ -59,7 +94,7 @@ end
 function back(n)
    n = n or 1
    for i = 1, n do
-      if not turtle.back() then
+      if not internalBack() then
          return false
       end
       x = x - xd
