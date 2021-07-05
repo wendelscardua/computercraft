@@ -10,11 +10,17 @@ function turn ()
 end
 
 while true do
-   while not turtle.inspectDown() do
+   local has_block, data
+   has_block, data = turtle.inspectDown()
+   while not has_block or data.tags["minecraft:carpets"] do
+      if data.tags["minecraft:carpets"] then
+         turtle.digDown()
+      end
       turtle.down()
+      has_block, data = turtle.inspectDown()
    end
 
-   local has_block, data = turtle.inspect()
+   has_block, data = turtle.inspect()
    if math.random() < 0.1 then
       turn()
    elseif not has_block then
