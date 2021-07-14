@@ -225,7 +225,7 @@ function craft (recipeName, quantity)
       local needed = numRecipes * aggregatedCount
       while needed > 0 do
          print(recLevel..">> "..recipeName.." recipe needs "..needed.." "..name)
-         local index, count = requireResource(name, numRecipes * aggregatedCount)
+         local index, count = requireResource(name, needed)
          move(mainChest, auxChest, index, count)
          needed = needed - count
       end
