@@ -61,6 +61,16 @@ craftables = {
             'minecraft:iron_ingot', 'minecraft:iron_ingot', nil
          }
       )
+   },
+   ['minecraft:ladder'] = {
+      quantity = 4,
+      recipe = size9(
+         {
+            'minecraft:stick', nil, 'minecraft:stick',
+            'minecraft:stick', 'minecraft:oak_planks', 'minecraft:stick',
+            'minecraft:stick', nil, 'minecraft:stick'
+         }
+      )
    }
 }
 
@@ -86,9 +96,31 @@ multimat('%s_fence_gate',
          ),
          wood_kind)
 
+multimat('%s_ladder',
+         3,
+         size9(
+            {
+               'minecraft:stick', nil, 'minecraft:stick',
+               'minecraft:stick', 'minecraft:%s_planks', 'minecraft:stick',
+               'minecraft:stick', nil, 'minecraft:stick'
+            }
+         ),
+         wood_kind)
+
 multimat('%s_planks',
          4,
          { '%s_log' },
+         wood_kind)
+
+multimat('%s_sign',
+         3,
+         size9(
+            {
+               '%s_planks', '%s_planks', '%s_planks',
+               nil, 'minecraft:stick', nil,
+               nil, 'minecraft:stick', nil
+            }
+         ),
          wood_kind)
 
 multimat('%s_slab',
