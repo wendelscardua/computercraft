@@ -117,8 +117,8 @@ multimat('%s_sign',
          size9(
             {
                '%s_planks', '%s_planks', '%s_planks',
+               '%s_planks', '%s_planks', '%s_planks',
                nil, 'minecraft:stick', nil,
-               nil, 'minecraft:stick', nil
             }
          ),
          wood_kind)
