@@ -71,6 +71,15 @@ craftables = {
             'minecraft:stick', nil, 'minecraft:stick'
          }
       )
+   },
+   ['minecraft:torch'] = {
+      quantity = 4,
+      recipe = size4(
+         {
+            'minecraft:coal', nil,
+            'minecraft:stick', nil
+         }
+      )
    }
 }
 
