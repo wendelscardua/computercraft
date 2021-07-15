@@ -3,7 +3,7 @@ args = {...}
 rackX, rackY, rackZ = table.unpack(args)
 
 rack = peripheral.wrap("back")
-chest = peripheral.wrap("up")
+chest = peripheral.wrap("top")
 
 function processOrder (orderId)
    print("Processing order "..orderId)
