@@ -3,16 +3,7 @@ args = {...}
 rackX, rackY, rackZ = table.unpack(args)
 
 rack = peripheral.wrap("back")
-
-function findFreeRackSlot ()
-   while true do
-      for i = 1,rack.size() do
-         if not rack.getItemDetail(i) then return i end
-      end
-      print("Rack is full... sleeping")
-      sleep(10)
-   end
-end
+chest = peripheral.wrap("up")
 
 function processOrder (orderId)
    print("Processing order "..orderId)
@@ -26,11 +17,9 @@ function processOrder (orderId)
             else
                quantity = needed
             end
-            rackSlot = findFreeRackSlot()
-            print("Rack slot: "..rackSlot)
-            print("x = "..rackX..", y = "..rackY..", z = "..rackZ)
-            result = commands.replaceItem("block", rackX, rackY, rackZ, "container."..rackSlot, resource.item.name, quantity)
+            result = commands.replaceItem("block", "~", "~1", "~", "container.0", resource.item.name, quantity)
             print(textutils.serialize(result))
+            chest.pushItems("back", 1)
             needed = needed - quantity
          end
       end
