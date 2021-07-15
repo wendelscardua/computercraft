@@ -27,7 +27,10 @@ function processOrder (orderId)
                quantity = needed
             end
             rackSlot = findFreeRackSlot()
-            commands.replaceItem("block", rackX, rackY, rackZ, "container."..rackSlot, resource.item.name, quantity)
+            print("Rack slot: "..rackSlot)
+            print("x = "..rackX..", y = "..rackY..", z = "..rackZ)
+            result = commands.replaceItem("block", rackX, rackY, rackZ, "container."..rackSlot, resource.item.name, quantity)
+            print(textutils.serialize(result))
             needed = needed - quantity
          end
       end
